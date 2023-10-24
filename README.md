@@ -1,39 +1,39 @@
-# Testes Transferências com a API - Ignite
+# Testing Transfers with the API - Ignite
 <br>
 
-## Sobre
+## About
 
-Desafio proposto durante a trilha de NodeJS no bootcamp Ignite da RocketSeat. Esse desafio foi proposto no quinto capitulo da trilha e seu objetivo foi consolidar os conhecimentos ensinados durante o modulo 5 do curso.
+Challenge proposed during the NodeJS track at RocketSeat's Ignite bootcamp. This challenge was proposed in the fifth chapter of the trail and its objective was to consolidate the knowledge taught during module 5 of the course.
 
 
-A nova funcionalidade deverá permitir a transferência de valores entre contas. Para isso, você pode pensar na melhor forma de construir essa solução mas alguns requisitos deverão ser cumpridos:
+The new functionality should allow the transfer of amounts between accounts. To do this, you can think about the best way to build this solution, but some requirements must be met:
 
-- Não deve ser possível transferir valores superiores ao disponível no saldo de uma conta;
-- O balance (obtido através da rota `/api/v1/statements/balance`) deverá considerar também todos os valores transferidos ou recebidos através de transferências ao exibir o saldo de um usuário;
-- As informações para realizar uma transferência serão:
+- It must not be possible to transfer amounts greater than what is available in an account balance;
+- The balance (obtained through the route `/api/v1/statements/balance`) must also consider all amounts transferred or received through transfers when displaying a user's balance;
+- The information to make a transfer will be:
 
     ```json
     {
     	"amount": 100,
-    	"description": "Descrição da transferência"
+    	"description": "Transfer description"
     }
     ```
 
-    Você pode passar o `id` do usuário destinatário via parâmetro na rota (exemplo: `/api/v1/statements/transfers/:user_id`) e o id do usuário remetente poderá ser obtido através do token JWT enviado no header da requisição;
+    You can pass the `id` of the recipient user via a parameter in the route (example: `/api/v1/statements/transfers/:user_id`) and the id of the sender user can be obtained through the JWT token sent in the request header;
 
-- Ao mostrar o balance de um usuário, operações do tipo `transfer` deverão possuir os seguintes campos:
+- When showing a user's balance, `transfer` type operations must have the following fields:
 
     ```json
     {
       "id": "4d04b6ec-2280-4dc2-9432-8a00f64e7930",
       "sender_id": "cfd06865-11b9-412a-aa78-f47cc3e52905",
       "amount": 100,
-      "description": "Transferência de valor",
+      "description": "Value transfer",
       "type": "transfer",
       "created_at": "2021-03-26T21:33:11.370Z",
       "updated_at": "2021-03-26T21:33:11.370Z"
     }
     ```
-
-    Observe o campo `sender_id`. Esse deverá ser o `id` do usuário que enviou a transferência.
-    O campo `type` também deverá exibir o tipo da operação, que nesse caso é `transfer`.
+    
+    Note the `sender_id` field. This must be the `id` of the user who sent the transfer.
+    The `type` field must also display the type of the operation, which in this case is `transfer`.
